@@ -13,9 +13,8 @@ Job listings -> scraped from web using API connection to an existing Job Board (
 ## Solution
 
 Below is an an architecture diagram. The user adds preferences and upload their resume. </br>
-Raw resumes are stored in S3, which triggers a lambda function to clean the resume data and profile preferences. </br>
-Post-cleaned data get stored in a different S3 bucket, which triggers a separate lambda function that matches to
-job listings which are the web-scraping results from an API call to a job site. </br> 
+Resume PDFs are stored in S3, which triggers a lambda function to parse the resume and save in OpenSearch.</br>
+Resumes are then matched to job listings which are the Apify web-scraping results from an API call to a job site like Indeed. </br> 
 The matched listings are returned and shown in the front-end UI in a ranked order. </br>
 The user can then click on the job listing to view more details. </br>
 
